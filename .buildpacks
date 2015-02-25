@@ -1,0 +1,4 @@
+https://github.com/ello/heroku-buildpack-apt.git#jz-multiarch-include-path
+https://github.com/ello/heroku-buildpack-cmake.git
+https://github.com/ryandotsmith/nginx-buildpack.git
+https://github.com/heroku/heroku-buildpack-ruby.git
