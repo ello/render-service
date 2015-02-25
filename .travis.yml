@@ -1,3 +1,15 @@
 language: ruby
-rvm:
-  - 2.2.0
+cache:
+  - bundler
+  - apt
+bundler_args: "--without staging,production"
+rvm: 2.2.0
+before_install:
+- sudo apt-get update -q
+- sudo apt-get -y --reinstall -q install imagemagick libicu-dev
+script:
+- bundle exec rake --trace SPEC_OPTS="--format documentation"
+notifications:
+  email: false
+  slack:
+    secure: If9kP8Jz+ruQLRczTmTvQyc+qat/XqygwJyqau4zl1rovX4o5J3BUQkL1jYQjFCYcXKLWFBbFN4HQim/bgjDOXsrew5MV7/kAz7rQ327yexHAhhsCR0KNgnmNw6arzmHcHM5/Z3q7a3txTiM/qFbPp8pWv+BvghZ/syko3ke8QY=
