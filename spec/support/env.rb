@@ -1,0 +1,2 @@
+ENV['RACK_ENV'] = 'test'
+ENV['CACHE_KEY_PREFIX'] = 'V1'
