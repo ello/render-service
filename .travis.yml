@@ -1,7 +1,7 @@
 language: ruby
 cache:
-  - bundler
-  - apt
+- bundler
+- apt
 bundler_args: "--without staging,production"
 rvm: 2.2.0
 before_install:
@@ -12,4 +12,4 @@ script:
 notifications:
   email: false
   slack:
-    secure: If9kP8Jz+ruQLRczTmTvQyc+qat/XqygwJyqau4zl1rovX4o5J3BUQkL1jYQjFCYcXKLWFBbFN4HQim/bgjDOXsrew5MV7/kAz7rQ327yexHAhhsCR0KNgnmNw6arzmHcHM5/Z3q7a3txTiM/qFbPp8pWv+BvghZ/syko3ke8QY=
+    secure: HfHAWEFFtngM/UkpYud+epvLmTXBxmlG4Odu2odtvJYlQiFm+u1UJMzh6kgi3h8Tw2Hpk+4SQw6SRA3/IEoPalhEXdp00dgX1KVYpiE3+o2h4iMFo3EVmeEM68MsYrSOv7ucR1fJCuGVYb0RWg2+eCBG5zXecnESxyCozC+rrZc=
