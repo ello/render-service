@@ -6,6 +6,11 @@ Bundler.setup
 $LOAD_PATH.unshift File.expand_path('../lib', __FILE__)
 require 'ello/render_service'
 
+# Set timeouts
+require 'rack-timeout'
+Rack::Timeout.timeout = 20  # seconds
+use Rack::Timeout
+
 # Cache in memcache
 require 'dalli'
 require 'rack/cache'

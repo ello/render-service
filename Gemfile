@@ -4,6 +4,8 @@ ruby '2.2.0'
 
 gem 'sinatra'
 gem 'rake'
+gem 'puma'
+gem 'rack-timeout'
 
 gem 'nokogiri',                     '1.6.5' # Lock since 1.6.6 is buggy
 gem 'html-pipeline',                github: 'modeset/html-pipeline'

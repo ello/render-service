@@ -44,6 +44,8 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    puma (2.9.2)
+      rack (>= 1.1, < 2.0)
     pygments.rb (0.6.2)
       posix-spawn (~> 0.3.6)
       yajl-ruby (~> 1.2.0)
@@ -54,6 +56,7 @@ GEM
       rack
     rack-test (0.6.3)
       rack (>= 1.0)
+    rack-timeout (0.1.1)
     rake (10.4.2)
     rinku (1.7.3)
     rspec (3.1.0)
@@ -100,9 +103,11 @@ DEPENDENCIES
   newrelic_rpm
   nokogiri (= 1.6.5)
   pry
+  puma
   pygments.rb (~> 0.6.0)
   rack-cache
   rack-test
+  rack-timeout
   rake
   rinku (~> 1.7)
   rspec
