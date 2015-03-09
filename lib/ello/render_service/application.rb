@@ -1,4 +1,5 @@
 require 'sinatra'
+require 'newrelic_rpm'
 require 'digest/sha1'
 require 'ello/render_service/markdown_renderer'
 

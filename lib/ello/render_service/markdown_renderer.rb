@@ -3,8 +3,6 @@ require 'rinku'
 require 'gemoji'
 require 'truncato'
 
-require 'newrelic_rpm'
-
 require 'ello/render_service/filters/mention_filter'
 require 'ello/render_service/filters/rumoji_filter'
 require 'ello/render_service/filters/no_follow_filter'
