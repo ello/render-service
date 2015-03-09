@@ -1,6 +1,9 @@
 require 'rubygems'
 require 'bundler'
 
+# Set up proper log syncing on Heroku
+$stdout.sync = true
+
 Bundler.setup
 
 $LOAD_PATH.unshift File.expand_path('../lib', __FILE__)
