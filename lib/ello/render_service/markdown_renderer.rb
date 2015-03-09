@@ -10,6 +10,7 @@ require 'ello/render_service/filters/rumoji_filter'
 require 'ello/render_service/filters/no_follow_filter'
 require 'ello/render_service/filters/relative_link_filter'
 require 'ello/render_service/filters/new_window_filter'
+require 'ello/render_service/instrumentation'
 
 module Ello
   module RenderService
