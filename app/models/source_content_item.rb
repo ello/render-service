@@ -1,0 +1,2 @@
+class SourceContentItem < ApplicationRecord
+end
