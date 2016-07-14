@@ -1,15 +1,23 @@
+sudo: required
+dist: trusty
 language: ruby
+bundler_args: "--without production"
 cache:
-- bundler
-- apt
-bundler_args: "--without staging,production"
-rvm: 2.2.0
+  - bundler
+  - apt
+services:
+- postgresql
 before_install:
 - sudo apt-get update -q
 - sudo apt-get -y --reinstall -q install imagemagick libicu-dev
+addons:
+  postgresql: '9.4'
 script:
-- bundle exec rake --trace SPEC_OPTS="--format documentation"
+- RAILS_ENV=test rake db:setup spec SPEC_OPTS="--format documentation"
 notifications:
   email: false
   slack:
-    secure: HfHAWEFFtngM/UkpYud+epvLmTXBxmlG4Odu2odtvJYlQiFm+u1UJMzh6kgi3h8Tw2Hpk+4SQw6SRA3/IEoPalhEXdp00dgX1KVYpiE3+o2h4iMFo3EVmeEM68MsYrSOv7ucR1fJCuGVYb0RWg2+eCBG5zXecnESxyCozC+rrZc=
+    on_success: change
+    on_failure: change
+    rooms:
+      secure: nxfEX0dLyjTTHOOGMav5ExdwCfVQZRNq5LUAfI8EUChLgSHYQextLWpfrL04B8CuB1+ngAsv1JdTX+MPtpH+GNM/it+a2IgwUshBp0Cd77wTrQoS9CxLXpV4dbFfu01xYmdx5VDsNbAKO9ci62m0ix6lR5Jw2q3YjbBbvvjqFsTvSCjAYY8VXg9kqjEfucTXKQsbpZWkZTbMecWL0iNB8OXkAnFviCOX8hMTzm0eyV+3gw9AwnKFbUQTYAJYolqYUER5aIXWSW7ASogl4kAKCO0OGjyTBXReCTCbeAKTKGd5UaU7ZNDzgRNamqF9FskM1LoRU0B1erHAhXbmdD0bxXTNtaTXlpV/4I3pZe9mwoSXqyc1fg3WrC9dSPXNsnIYMU1shGhief3URe0+ASEWWwP7WMP7/7jhIF4SHUBZExAaw2dYORlkO3nkzaZJZr4u2KMpXRv4/iAi20Cq5xRtEdwoJe9UpwbRUIsZQH8XrJoZYleQuxHSV+5V4hvCXBbgLu8hL6GtT3bvW2vo9V3ZHLY7o7/5TyTeIUKrPWRVB94Xfd6vsXoMxAt5MpX6VCsV6pX9RHzhVJyg19lxVvyrx9g/0E1ZIS772iMcDI5tbe/YWn/UsRO5XrrHEfQqk0+sl1zVywmMagi2jW72FYlL8gQJpsP+t5EXUjJFAv98feE=
