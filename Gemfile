@@ -14,6 +14,7 @@ gem 'rack-timeout'
 group :development, :test do
   gem 'pry-rails'
   gem 'rspec-rails'
+  gem 'dotenv-rails'
 end
 
 group :production do

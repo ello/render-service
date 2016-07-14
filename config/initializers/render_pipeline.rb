@@ -21,7 +21,7 @@ RenderPipeline.configure do |config|
   config.add_emoji 'hot_shit'
 
   config.render_context :default do |c|
-    c.asset_root = "#{HostConfiguration::AssetHostConfiguration.call}/images/"
+    c.asset_root = "#{ENV['ASSET_HOST_WITH_PROTOCOL']}/images/"
     c.host_name = ENV['ACTIONMAILER_DEFAULT_HOST']
     c.hashtag_root = '/search'
     c.render_filters = RenderPipeline.configuration.render_filters - [RenderPipeline::Filter::ImageAdjustments]
@@ -33,7 +33,7 @@ RenderPipeline.configure do |config|
 
   config.render_context :notification_email do |c|
     c.use_absolute_url = true
-    c.asset_root = "#{HostConfiguration::AssetHostConfiguration.call}/images/"
+    c.asset_root = "#{ENV['ASSET_HOST_WITH_PROTOCOL']}/images/"
     c.host_name = ENV['ACTIONMAILER_DEFAULT_HOST']
     c.hashtag_root = '/search'
     c.render_filters = RenderPipeline.configuration.render_filters - [RenderPipeline::Filter::ImageAdjustments]
