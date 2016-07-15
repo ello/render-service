@@ -9,8 +9,7 @@ gem 'interactor-rails'
 gem 'render_pipeline', github: 'ello/render_pipeline'
 
 gem 'rack-timeout'
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-# gem 'jbuilder', '~> 2.5'
+gem 'newrelic_rpm'
 
 group :development, :test do
   gem 'pry-rails'
@@ -19,6 +18,5 @@ group :development, :test do
 end
 
 group :production do
-  gem 'newrelic_rpm'
   gem 'rails_12factor'
 end
