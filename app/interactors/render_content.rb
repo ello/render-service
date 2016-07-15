@@ -9,7 +9,7 @@ class RenderContent
         content: content,
         checksum: Digest::SHA1.hexdigest(content)
       )
-      context.rendered_content = content if pipeline.to_s == context.params[:pipeline]
+      context.rendered_content = content if pipeline == context.params[:pipeline]
     end
   end
 end

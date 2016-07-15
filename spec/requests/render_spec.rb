@@ -5,7 +5,7 @@ describe 'rendering a post via the API', type: :request do
   let(:pipeline) { 'default' }
   let(:checksum) { Digest::SHA1.hexdigest(content) }
 
-  it 'returns a rendered form of the content' do
+  before do
     post '/v1/render',
          params: {
            checksum: checksum,
@@ -13,6 +13,25 @@ describe 'rendering a post via the API', type: :request do
            content: content
          }.to_json,
          headers: { 'Content-Type' => 'application/json' }
+  end
+
+  it 'returns a rendered form of the content' do
     expect(response.body).to eq('<h3>Hello, world!</h3>')
+  end
+
+  describe 'when no pipeline is specified' do
+    let(:pipeline) { nil }
+
+    it 'renders with the default pipeline' do
+      expect(response.body).to eq('<h3>Hello, world!</h3>')
+    end
+  end
+
+  describe 'when an invalid pipeline is supplied' do
+    let(:pipeline) { 'noop' }
+
+    it 'returns back a 422' do
+      expect(response.status).to eq(422)
+    end
   end
 end
