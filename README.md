@@ -1,31 +1,24 @@
-# Ello::Markdown::Renderer
+# README
 
-TODO: Write a gem description
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-## Installation
+Things you may want to cover:
 
-Add this line to your application's Gemfile:
+* Ruby version
 
-```ruby
-gem 'ello-markdown-renderer'
-```
+* System dependencies
 
-And then execute:
+* Configuration
 
-    $ bundle
+* Database creation
 
-Or install it yourself as:
+* Database initialization
 
-    $ gem install ello-markdown-renderer
+* How to run the test suite
 
-## Usage
+* Services (job queues, cache servers, search engines, etc.)
 
-TODO: Write usage instructions here
+* Deployment instructions
 
-## Contributing
-
-1. Fork it ( https://github.com/[my-github-username]/ello-markdown-renderer/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
+* ...
