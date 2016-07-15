@@ -4,6 +4,7 @@ describe 'rendering a post via the API', type: :request do
   let(:content) { '### Hello, world!' }
   let(:pipeline) { 'default' }
   let(:checksum) { Digest::SHA1.hexdigest(content) }
+  let(:response_json) { JSON.parse(response.body) }
 
   before do
     post '/v1/render',
@@ -16,14 +17,14 @@ describe 'rendering a post via the API', type: :request do
   end
 
   it 'returns a rendered form of the content' do
-    expect(response.body).to eq('<h3>Hello, world!</h3>')
+    expect(response_json).to eq('rendered_content' => '<h3>Hello, world!</h3>')
   end
 
   describe 'when no pipeline is specified' do
     let(:pipeline) { nil }
 
     it 'renders with the default pipeline' do
-      expect(response.body).to eq('<h3>Hello, world!</h3>')
+      expect(response_json).to eq('rendered_content' => '<h3>Hello, world!</h3>')
     end
   end
 

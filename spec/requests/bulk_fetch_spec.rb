@@ -21,7 +21,11 @@ describe 'bulk fetching posts via the API', type: :request do
 
     it 'returns a rendered form of the content' do
       expect(response_json).to eq(
-        [ { 'rendered_content' => '<h3>Hello, world!</h3>' } ]
+        [ {
+          'checksum' => checksum,
+          'pipeline' => pipeline,
+          'rendered_content' => '<h3>Hello, world!</h3>'
+        } ]
       )
     end
   end

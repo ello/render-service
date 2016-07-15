@@ -4,11 +4,16 @@ class V1::BulkFetchesController < ApplicationController
 
   def create
     result = params['_json'].map do |r|
-      item = RenderedContentItem.where(checksum: r['checksum'],
-                                       pipeline: r['pipeline']).first
-      { rendered_content: item && item.content }
+      if item = RenderedContentItem.where(checksum: r['checksum'],
+                                          pipeline: r['pipeline']).first
+        {
+          rendered_content: item.content,
+          checksum:         item.checksum,
+          pipeline:         item.pipeline
+        }
+      end
     end
-    render json: result.to_json
+    render json: result.compact.to_json
   end
 
 end

@@ -7,7 +7,7 @@ class V1::RendersController < ApplicationController
   def create
     result = RenderContent.call(params: source_content_item_params)
     if result.success?
-      render html: result.rendered_content
+      render json: { rendered_content: result.rendered_content }
     else
       head :unprocessable_entity
     end
