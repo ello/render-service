@@ -2,15 +2,24 @@ class RenderContent
   include Interactor
 
   def call
-    source_content_item = SourceContentItem.create!(context.params.slice(:content, :checksum))
+    source = SourceContentItem
+             .where(checksum: context.checksum)
+             .first_or_initialize(content: context.content)
+    render_content_for(source) if source.new_record?
+    context.fail! unless source.save
+    context.rendered_content = source.rendered_content_for(context.pipeline) if context.pipeline.present?
+  end
+
+  private
+
+  def render_content_for(source)
     RenderPipeline.configuration.render_contexts.each_key do |pipeline|
-      content = RenderPipeline.render(source_content_item.content, context: pipeline)
-      source_content_item.rendered_content_items.create!(
+      content = RenderPipeline.render(source.content, context: pipeline)
+      source.rendered_content_items.build(
         pipeline: pipeline,
         content: content,
-        checksum: source_content_item.checksum
+        checksum: source.checksum
       )
-      context.rendered_content = content if pipeline == context.params[:pipeline]
     end
   end
 end

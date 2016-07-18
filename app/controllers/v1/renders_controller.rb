@@ -6,7 +6,7 @@ class V1::RendersController < ApplicationController
                 :ensure_checksum_matches_content!
 
   def create
-    result = RenderContent.call(params: source_content_item_params)
+    result = RenderContent.call(source_content_item_params)
     if result.success?
       render json: { rendered_content: result.rendered_content }
     else

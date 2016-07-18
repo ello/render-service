@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160714214533) do
+ActiveRecord::Schema.define(version: 20160718221317) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20160714214533) do
     t.string   "version"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.index ["pipeline", "checksum"], name: "index_rendered_content_items_on_pipeline_and_checksum", using: :btree
     t.index ["source_content_item_id"], name: "index_rendered_content_items_on_source_content_item_id", using: :btree
   end
 

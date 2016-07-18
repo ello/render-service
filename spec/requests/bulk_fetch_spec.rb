@@ -9,7 +9,7 @@ describe 'bulk fetching posts via the API', type: :request do
 
   describe 'when the requested content has already been rendered' do
     before do
-      RenderContent.call(params: { content: content, checksum: checksum })
+      RenderContent.call(content: content, checksum: checksum)
 
       post '/v1/bulk_fetches',
            params: [
