@@ -6,7 +6,7 @@ gem 'puma', '~> 3.0'
 
 gem 'interactor-rails'
 
-gem 'render_pipeline', github: 'ello/render_pipeline'
+gem 'render_pipeline', github: 'ello/render_pipeline', ref: 'e1179'
 
 gem 'rack-timeout'
 gem 'newrelic_rpm'

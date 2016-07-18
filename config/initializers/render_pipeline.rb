@@ -20,23 +20,36 @@ RenderPipeline.configure do |config|
   config.add_emoji 'pride'
   config.add_emoji 'hot_shit'
 
-  config.render_context :default do |c|
+  common_config = lambda do |c|
+    c.truncate_tail = '...'
     c.asset_root = "#{ENV['ASSET_HOST_WITH_PROTOCOL']}/images/"
     c.host_name = ENV['ACTIONMAILER_DEFAULT_HOST']
     c.hashtag_root = '/search'
-    c.render_filters = RenderPipeline.configuration.render_filters - [RenderPipeline::Filter::ImageAdjustments]
   end
 
-  config.render_context :with_image_adjustments do |c|
-    c.render_filters = RenderPipeline.configuration.render_filters + [RenderPipeline::Filter::ImageAdjustments]
+  config.render_context :default, :v1_content do |c|
+    common_config.call(c)
+  end
+
+  config.render_context :v1_bio do |c|
+    c.truncate_length = 666
+    common_config.call(c)
+  end
+
+  config.render_context :v1_summary_120 do |c|
+    c.truncate_length = 120
+    common_config.call(c)
+  end
+
+  config.render_context :v1_summary_160 do |c|
+    c.truncate_length = 160
+    common_config.call(c)
   end
 
   config.render_context :notification_email do |c|
+    c.truncate_length = 50
     c.use_absolute_url = true
-    c.asset_root = "#{ENV['ASSET_HOST_WITH_PROTOCOL']}/images/"
-    c.host_name = ENV['ACTIONMAILER_DEFAULT_HOST']
-    c.hashtag_root = '/search'
-    c.render_filters = RenderPipeline.configuration.render_filters - [RenderPipeline::Filter::ImageAdjustments]
+    common_config.call(c)
   end
 end
 
