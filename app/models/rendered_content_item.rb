@@ -7,4 +7,7 @@ class RenderedContentItem < ApplicationRecord
             :pipeline,
             presence: true
 
+  validates :pipeline,
+            inclusion: { in: ->(_) { RenderPipeline.configuration.render_contexts.keys } }
+
 end

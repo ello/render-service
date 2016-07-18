@@ -168,6 +168,8 @@ GEM
       crass (~> 1.0.2)
       nokogiri (>= 1.4.4)
       nokogumbo (~> 1.4.1)
+    shoulda-matchers (3.1.1)
+      activesupport (>= 4.0.0)
     slop (3.6.0)
     sprockets (3.6.3)
       concurrent-ruby (~> 1.0)
@@ -203,6 +205,7 @@ DEPENDENCIES
   rails_12factor
   render_pipeline!
   rspec-rails
+  shoulda-matchers
 
 BUNDLED WITH
    1.12.5
