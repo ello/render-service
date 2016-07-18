@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'rendering a post via the API', type: :request do
   let(:content) { '### Hello, world!' }
   let(:pipeline) { 'default' }
-  let(:checksum) { Digest::SHA1.hexdigest(content) }
+  let(:checksum) { Digest::MD5.hexdigest(content) }
   let(:response_json) { JSON.parse(response.body) }
 
   before do

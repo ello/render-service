@@ -2,7 +2,8 @@ class V1::RendersController < ApplicationController
 
   wrap_parameters false
 
-  before_action :ensure_pipeline_exists!
+  before_action :ensure_pipeline_exists!,
+                :ensure_checksum_matches_content!
 
   def create
     result = RenderContent.call(params: source_content_item_params)
@@ -23,6 +24,13 @@ class V1::RendersController < ApplicationController
     params[:pipeline] = params[:pipeline].presence || 'default'
     unless RenderPipeline.configuration.render_contexts.keys.include?(params[:pipeline])
       render plain: 'Invalid pipeline specified!',
+             status: :unprocessable_entity
+    end
+  end
+
+  def ensure_checksum_matches_content!
+    unless Digest::MD5.hexdigest(params[:content]) == params[:checksum]
+      render plain: 'Checksum does not match content!',
              status: :unprocessable_entity
     end
   end
