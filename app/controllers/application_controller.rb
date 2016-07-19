@@ -3,7 +3,7 @@ class ApplicationController < ActionController::API
   include ActionController::HttpAuthentication::Basic::ControllerMethods
   include ActionController::HttpAuthentication::Token::ControllerMethods
 
-  before_filter :authenticate
+  before_action :authenticate
 
   protected
 
