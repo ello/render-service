@@ -6,7 +6,6 @@ class RenderContent
              where(checksum: context.checksum).
              first_or_initialize(content: context.content)
     render_content_for(source) if source.new_record?
-    context.fail! unless source.save
     context.rendered_content = source.rendered_content_for(context.pipeline) if context.pipeline.present?
   end
 
@@ -21,5 +20,6 @@ class RenderContent
         checksum: source.checksum
       )
     end
+    context.fail! unless source.save
   end
 end
