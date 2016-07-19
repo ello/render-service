@@ -10,4 +10,10 @@ class RenderedContentItem < ApplicationRecord
   validates :pipeline,
             inclusion: { in: ->(_) { RenderPipeline.configuration.render_contexts.keys } }
 
+  def self.matching_checksums_and_pipelines(array)
+    conditions = array.map do |r|
+      sanitize_sql_for_conditions(['(checksum = ? AND pipeline = ?)',  r['checksum'], r['pipeline']])
+    end
+    where(conditions * ' OR ')
+  end
 end
