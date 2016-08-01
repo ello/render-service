@@ -13,7 +13,7 @@ before_install:
 addons:
   postgresql: '9.4'
 script:
-- RAILS_ENV=test rake db:setup spec SPEC_OPTS="--format documentation"
+- RAILS_ENV=test bundle exec rake db:setup spec SPEC_OPTS="--format documentation"
 notifications:
   email: false
   slack:
