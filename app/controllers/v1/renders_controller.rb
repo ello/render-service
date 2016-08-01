@@ -21,7 +21,6 @@ class V1::RendersController < ApplicationController
   end
 
   def ensure_pipeline_exists!
-    params[:pipeline] = params[:pipeline].presence || 'default'
     unless RenderPipeline.configuration.render_contexts.keys.include?(params[:pipeline])
       render plain: 'Invalid pipeline specified!',
              status: :unprocessable_entity
