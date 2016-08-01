@@ -14,10 +14,6 @@ class RenderedContentItem < ApplicationRecord
     conditions = array.map do |r|
       sanitize_sql_for_conditions(['(checksum = ? AND pipeline = ?)',  r['checksum'], r['pipeline']])
     end
-    q = where(conditions * ' OR ')
-    puts "=====QUERY====="
-    puts q.to_sql
-    puts "=====END====="
-    q
+    where(conditions * ' OR ')
   end
 end
