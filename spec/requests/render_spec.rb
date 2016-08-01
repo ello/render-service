@@ -20,6 +20,11 @@ describe 'rendering a post via the API', type: :request do
     expect(response_json).to eq('rendered_content' => '<h3>Hello, world!</h3>')
   end
 
+  it 'only renders the requested pipeline' do
+    source = SourceContentItem.last
+    expect(source.rendered_content_items.count).to eq(1)
+  end
+
   describe 'when no pipeline is specified' do
     let(:pipeline) { nil }
 
