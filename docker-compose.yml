@@ -1,0 +1,16 @@
+db:
+  image: postgres:9.4
+  expose:
+    - "5432"
+  environment:
+    POSTGRES_USER: render
+    POSTGRES_PASSWORD: render
+    POSTGRES_DB: render
+rails:
+  ports:
+    - "3000:3000"
+  build: .
+  links:
+    - db
+  environment:
+    DATABASE_URL: 'postgres://render:render@db:5432/render'
